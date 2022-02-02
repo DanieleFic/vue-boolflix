@@ -3,20 +3,28 @@
         <input 
         type="text"
         v-model.trim="inputText"
-        @keyup="$emit('cercafilm',inputText)">
+        @keyup.enter="$emit('cercafilm',inputText)">
 
-        <input
-        type="button"
-        value="Cerca"
-        @click.prevent="$emit('filtra',inputText)">
+        <button
+            type="submit"
+            class="btn btn-primary"
+            @click.prevent="$emit('cercafilm',inputText)">
+                Search
+            </button>
 
     </div>
 </template>
 
 <script>
 export default {
-    name:"cerca"
+    name:"cerca",
+    data() {
+        return{
+            inputText: ""
+        }
+    }
 }
+
 </script>
 
 <style>
