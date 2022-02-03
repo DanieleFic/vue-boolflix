@@ -2,10 +2,10 @@
     <div>
         
         <ul>
-            <li>Titolo originale:{{info.original_title}}</li>
-            <li>Titolo:{{info.title}}</li>
+            <li>Titolo originale:{{info2.original_name}}</li>
+            <li>Titolo:{{info2.name}}</li>
             <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
-            <li>Voto:{{info.vote_average}}</li>
+            <li>Voto:{{info2.vote_average}}</li>
         </ul>
 
     </div>
@@ -13,9 +13,9 @@
 
 <script>
 export default {
-    name:"ListaFilm",
+    name:"ListaSerie",
     props: {
-        info: Object
+        info2: Object
     },
     data() {
         return{
@@ -24,10 +24,10 @@ export default {
     },
     methods:{
         cambioBandiera(){
-            if(this.info.original_language == "it"){
+            if(this.info2.original_language == "it"){
                 return   require("../../assets/img/italy.png")
 
-            }else if(this.info.original_language == "en"){
+            }else if(this.info2.original_language == "en"){
                 return   require("../../assets/img/united-states.png")
             }else{
                 return require("../../assets/img/flag.png")
