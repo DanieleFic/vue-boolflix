@@ -2,12 +2,12 @@
     <div class="ms_lista">
         <Cerca
         @cercafilm="getFilm"/>
-        <p v-if="movieArray.length > 1">FILM</p>
+        <p v-if="movieArray.length != 0">FILM</p>
         <ListaFilm
             v-for="film in movieArray" 
             :key="film.id"
             :info="film"/>
-            <p v-if="movieArray.length > 1">SERIE TV</p>
+            <p v-if="serieTvArray.length != 0">SERIE TV</p>
             <ListaSerie
             v-for="serie in serieTvArray" 
             :key="serie.id"
@@ -70,6 +70,7 @@ export default {
         .then( (payload2) => {
             this.serieTvArray = payload2.data.results;
             console.log("serietvarray",this.serieTvArray)
+            
             
             
         })

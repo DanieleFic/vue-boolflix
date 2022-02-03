@@ -2,6 +2,8 @@
     <div>
         
         <ul>
+            <li><img class="ms_cover" :src="getImg()" alt=""></li>
+            <li><img :src="cambioBandiera()" alt=""></li>
             <li>Titolo originale:{{info2.original_name}}</li>
             <li>Titolo:{{info2.name}}</li>
             <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
@@ -32,6 +34,15 @@ export default {
             }else{
                 return require("../../assets/img/flag.png")
             }
+        },
+        getImg(){
+            
+            if(!this.info2.poster_path == ""){
+                return "https://image.tmdb.org/t/p/w342" + this.info2.poster_path
+
+            }else{
+                return require("../../assets/img/No_Image_Cover.jpg")
+            }
         }
     }
 
@@ -40,9 +51,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    img{
+    .ms_bandiera{
         width: 15px;
         height: 15px;
         text-align: center;
-    } 
+    }
+    .ms_cover{
+        width: 342px;
+    }
 </style>

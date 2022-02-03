@@ -2,9 +2,10 @@
     <div>
         
         <ul>
+            <li><img :src="getImg()" alt=""></li>
             <li>Titolo originale:{{info.original_title}}</li>
             <li>Titolo:{{info.title}}</li>
-            <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
+            <li>Lingua:  <img class="ms_bandiera" :src="cambioBandiera()" alt=""> </li>
             <li>Voto:{{info.vote_average}}</li>
         </ul>
 
@@ -32,6 +33,9 @@ export default {
             }else{
                 return require("../../assets/img/flag.png")
             }
+        },
+        getImg(){
+            return "https://image.tmdb.org/t/p/w342" + this.info.poster_path
         }
     }
 
@@ -40,9 +44,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    img{
+    .ms_bandiera{
         width: 15px;
         height: 15px;
         text-align: center;
-    } 
+    }
+
+
 </style>
