@@ -7,7 +7,7 @@
             <li>Titolo originale:{{info2.original_name}}</li>
             <li>Titolo:{{info2.name}}</li>
             <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
-            <li>Voto:{{info2.vote_average}}</li>
+            <li>Voto: <img v-for="element in getStelline()" :key="element.id" :src="numero" alt=""></li>
         </ul>
 
     </div>
@@ -21,7 +21,8 @@ export default {
     },
     data() {
         return{
-            
+            numeroArrotondato : "",
+            numero:""
         }
     },
     methods:{
@@ -43,6 +44,16 @@ export default {
             }else{
                 return require("../../assets/img/No_Image_Cover.jpg")
             }
+        },
+        getStelline(){
+            for (let index = 0; index < (this.info2.vote_average /2).toFixed(0); index++) {
+                this.numero = require("../../assets/img/star.png")
+                console.log(this.info2.vote_average)
+                return this.numero
+            }
+            /* this.numeroArrotondato = (this.info2.vote_average /2).toFixed(0);
+            return this.numeroArrotondato */
+            
         }
     }
 
