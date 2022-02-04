@@ -6,7 +6,7 @@
             <li>Titolo originale:{{info.original_title}}</li>
             <li>Titolo:{{info.title}}</li>
             <li>Lingua:  <img class="ms_bandiera" :src="cambioBandiera()" alt=""> </li>
-            <li>Voto:{{info.vote_average}}</li>
+            <div ><i v-for="element in getStelline()" :key="element.id" class="fas fa-star"></i> </div>
         </ul>
 
     </div>
@@ -36,6 +36,15 @@ export default {
         },
         getImg(){
             return "https://image.tmdb.org/t/p/w342" + this.info.poster_path
+        },
+        getStelline(){
+            const arrayStelline = [];
+            const numeroStelline = ( this.info.vote_average / 2).toFixed(0);
+            for( let cont = 0; cont <= numeroStelline; cont++ )
+            {
+                arrayStelline.push( 2 )
+            }
+            return arrayStelline
         }
     }
 

@@ -7,7 +7,10 @@
             <li>Titolo originale:{{info2.original_name}}</li>
             <li>Titolo:{{info2.name}}</li>
             <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
-            <li>Voto: <img v-for="element in getStelline()" :key="element.id" :src="numero" alt=""></li>
+            <div v-if="info2.vote_average/2 != 0" > voto:<i  v-for="element in getStelline()" :key="element.id" class="fas fa-star"></i>
+            </div>
+            <div v-else><p >no vote</p></div>
+            
         </ul>
 
     </div>
@@ -25,6 +28,12 @@ export default {
             numero:""
         }
     },
+    /* computed: {
+        getStelline(){
+            console.log((this.info2.vote_average / 2).toFixed(0))
+            return (this.info2.vote_average / 2).toFixed(0)
+        }
+    }, */
     methods:{
         cambioBandiera(){
             if(this.info2.original_language == "it"){
@@ -40,25 +49,22 @@ export default {
             
             if(!this.info2.poster_path == ""){
                 return "https://image.tmdb.org/t/p/w342" + this.info2.poster_path
-
             }else{
                 return require("../../assets/img/No_Image_Cover.jpg")
             }
         },
         getStelline(){
-            for (let index = 0; index < (this.info2.vote_average /2).toFixed(0); index++) {
-                this.numero = require("../../assets/img/star.png")
-                console.log(this.info2.vote_average)
-                return this.numero
+            const arrayStelline = [];
+            const numeroStelline = ( this.info2.vote_average/2);
+            for( let cont = 0; cont < numeroStelline; cont++ )
+            {
+                arrayStelline.push( "☆" )
+                console.log(arrayStelline)
             }
-            /* this.numeroArrotondato = (this.info2.vote_average /2).toFixed(0);
-            return this.numeroArrotondato */
-            
+            return arrayStelline
         }
     }
-
 }
-
 </script>
 
 <style scoped lang="scss">

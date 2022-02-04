@@ -7,7 +7,7 @@
 
         <button
             type="submit"
-            class="btn btn-primary"
+            class="ms_button"
             @click.prevent="$emit('cercafilm',inputText)">
                 Search
             </button>
@@ -27,6 +27,11 @@ export default {
 
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .ms_button{
+    background-color:red ;
+    border: 1px solid white;
+    border-radius: 3px;
+    }
 </style>
+
