@@ -1,7 +1,6 @@
 <template>
-    <div  class="ms_contenitore col-3">
-        <div class="ms_poster">
-            <div @mouseover="visibilità = true" @mouseout="visibilità = false" >
+    <div  class="ms_contenitore col">
+        <div class="ms_poster" @mouseover="visibilità = true" @mouseout="visibilità = false">
                 <img class="ms_cover" v-if="!visibilità" :src="getImg()" alt="">
                 <ul class="ms_ul" v-if="visibilità">
                     <!-- <li><img :src="cambioBandiera()" alt=""></li> -->
@@ -13,7 +12,6 @@
                         <i v-for="element in (5-getStelline2(voto))" :key="element.id" class="far fa-star"></i>
                     </li>
                 </ul>
-            </div>
         </div>
     </div>
 </template>
@@ -44,7 +42,7 @@ export default {
             }else if(this.info2.original_language == "en"){
                 return   require("../../assets/img/united-states.png")
             }else{
-                return require("../../assets/img/flag.png")
+                return require("../../assets/img/red-flag.png")
             }
         },
         getImg(){
@@ -97,11 +95,11 @@ export default {
     }
 
     .ms_contenitore{
-        padding: 10px 0px;
+        margin: 10px 0px;
     }
 
     .ms_ul{
-        padding:0;
+        padding:5px 5px;
         color: white;
         height: 300px;
         .fa-star{

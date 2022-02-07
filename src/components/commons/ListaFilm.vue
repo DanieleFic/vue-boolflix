@@ -1,5 +1,5 @@
 <template>
-    <div class="ms_contenitore col-3">
+    <div class="ms_contenitore col">
         <div class="ms_poster" @mouseover="visibilità = true" @mouseout="visibilità = false">
             
                 <img v-if="!visibilità" class="ms_cover" :src="getImg()" alt="">
@@ -37,7 +37,7 @@ export default {
             }else if(this.info.original_language == "en"){
                 return   require("../../assets/img/united-states.png")
             }else{
-                return require("../../assets/img/flag.png")
+                return require("../../assets/img/red-flag.png")
             }
         },
         getImg(){
@@ -93,7 +93,7 @@ export default {
     }
 
     .ms_contenitore{
-        padding: 10px 0px;
+        margin: 10px 0px;
     }
     
 
