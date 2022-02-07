@@ -37,7 +37,8 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
+            color: rgb(248, 0, 0);
+            
         }
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="ms_contenitore col-3">
-        <div class="ms_poster">
-            <div @mouseover="visibilità = true" @mouseout="visibilità = false">
+        <div class="ms_poster" @mouseover="visibilità = true" @mouseout="visibilità = false">
+            
                 <img v-if="!visibilità" class="ms_cover" :src="getImg()" alt="">
                 <ul class="ms_ul" v-if="visibilità">
                     <div>Titolo originale:{{info.original_title}}</div>
@@ -12,7 +12,7 @@
                     <i v-for="element in (5-getStelline2(voto))" :key="element.id" class="far fa-star"></i>
                     </div>
                 </ul>
-            </div>
+            
         </div>
     </div>
 </template>
@@ -41,7 +41,12 @@ export default {
             }
         },
         getImg(){
-            return "https://image.tmdb.org/t/p/original" + this.info.poster_path
+            
+            if(!this.info.poster_path == ""){
+                return "https://image.tmdb.org/t/p/original" + this.info.poster_path
+            }else{
+                return require("../../assets/img/No_Image_Cover.jpg")
+            }
         },
         /* getStelline(){
             const arrayStelline = [];
@@ -70,20 +75,30 @@ export default {
     }
 
     .ms_cover{
-        width: 100%
+        height: 100%;
+        width: 100%;
+        border-radius:10px;
+        img{
+            width: 100%;
+            
+        }
     }
 
     .ms_poster{
-        width: 70%;
+        width: 200px;
+        height: 300px;
+        background-color: black;
+        border: 1px solid white;
+        border-radius: 10px;
     }
 
     .ms_contenitore{
-        margin: 10px 0px;
+        padding: 10px 0px;
     }
     
 
     .ms_ul{
-        padding:0;
+        padding:5px 5px;
         color: white;
         height: 300px;
 

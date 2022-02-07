@@ -82,6 +82,7 @@ export default {
     .ms_cover{
         height: 100%;
         width: 100%;
+        border-radius:10px;
         img{
             width: 100%
         }
@@ -91,6 +92,8 @@ export default {
         width: 200px;
         height: 300px;
         background-color: black;
+        border: 1px solid white;
+        border-radius: 10px;
     }
 
     .ms_contenitore{

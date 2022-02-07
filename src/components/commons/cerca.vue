@@ -2,6 +2,7 @@
     <div>
         <input 
         type="text"
+        class="ms_input"
         v-model.trim="inputText"
         @keyup.enter="$emit('cercafilm',inputText)">
 
@@ -31,7 +32,12 @@ export default {
     .ms_button{
     background-color:red ;
     border: 1px solid white;
-    border-radius: 3px;
+    border-radius: 5px;
+    margin-left: 10px;
+    }
+
+    .ms_input{
+        border-radius: 5px;
     }
 </style>
 
