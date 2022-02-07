@@ -1,18 +1,20 @@
 <template>
-    <div>
-        
-        <ul>
-            <li><img class="ms_cover" :src="getImg()" alt=""></li>
-            <li><img :src="cambioBandiera()" alt=""></li>
-            <li>Titolo originale:{{info2.original_name}}</li>
-            <li>Titolo:{{info2.name}}</li>
-            <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
-            <div v-if="info2.vote_average/2 != 0" > voto:<i  v-for="element in getStelline()" :key="element.id" class="fas fa-star"></i>
+    <div  class="ms_contenitore col-3">
+        <div class="ms_poster">
+            <div @mouseover="visibilità = true" @mouseout="visibilità = false" >
+                <img class="ms_cover" v-if="!visibilità" :src="getImg()" alt="">
+                <ul class="ms_ul" v-if="visibilità">
+                    <!-- <li><img :src="cambioBandiera()" alt=""></li> -->
+                    <li>Titolo originale:{{info2.original_name}}</li>
+                    <li>Titolo:{{info2.name}}</li>
+                    <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
+                    <li >
+                        <i v-for="element in getStelline2(voto)" :key="element.id" class="fas fa-star"></i>
+                        <i v-for="element in (5-getStelline2(voto))" :key="element.id" class="far fa-star"></i>
+                    </li>
+                </ul>
             </div>
-            <div v-else><p >no vote</p></div>
-            
-        </ul>
-
+        </div>
     </div>
 </template>
 
@@ -24,8 +26,8 @@ export default {
     },
     data() {
         return{
-            numeroArrotondato : "",
-            numero:""
+            voto:"",
+            visibilità:false
         }
     },
     /* computed: {
@@ -48,12 +50,12 @@ export default {
         getImg(){
             
             if(!this.info2.poster_path == ""){
-                return "https://image.tmdb.org/t/p/w342" + this.info2.poster_path
+                return "https://image.tmdb.org/t/p/original" + this.info2.poster_path
             }else{
                 return require("../../assets/img/No_Image_Cover.jpg")
             }
         },
-        getStelline(){
+        /* getStelline(){
             const arrayStelline = [];
             const numeroStelline = ( this.info2.vote_average/2);
             for( let cont = 0; cont < numeroStelline; cont++ )
@@ -62,6 +64,10 @@ export default {
                 console.log(arrayStelline)
             }
             return arrayStelline
+        }, */
+        getStelline2(){
+            this.voto = Math.ceil( this.info2.vote_average / 2)
+            return this.voto
         }
     }
 }
@@ -74,6 +80,32 @@ export default {
         text-align: center;
     }
     .ms_cover{
-        width: 342px;
+        height: 100%;
+        width: 100%;
+        img{
+            width: 100%
+        }
+    }
+
+    .ms_poster{
+        width: 200px;
+        height: 300px;
+        background-color: black;
+    }
+
+    .ms_contenitore{
+        padding: 10px 0px;
+    }
+
+    .ms_ul{
+        padding:0;
+        color: white;
+        height: 300px;
+        .fa-star{
+                color: yellow;
+            }
+        li{
+            list-style-type: none;
+        }
     }
 </style>

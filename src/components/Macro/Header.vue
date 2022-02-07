@@ -1,7 +1,10 @@
 <template>
     <div class="header">
-        <Cerca
-        @cercafilm="passaFiltro"/>
+        <div class="ms_boxheader">
+            <h1>BoolFlix</h1>
+            <Cerca
+            @cercafilm="passaFiltro"/>
+        </div>
     </div>
 </template>
 
@@ -25,7 +28,16 @@ export default {
 
 <style scoped lang="scss">
     .header{
-        height: 150px;
+        height: 50px;
         background-color: black;
+    
+        .ms_boxheader{
+            margin: 0 auto;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
     }
 </style>

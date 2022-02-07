@@ -1,14 +1,19 @@
 <template>
-    <div>
-        
-        <ul>
-            <li><img :src="getImg()" alt=""></li>
-            <li>Titolo originale:{{info.original_title}}</li>
-            <li>Titolo:{{info.title}}</li>
-            <li>Lingua:  <img class="ms_bandiera" :src="cambioBandiera()" alt=""> </li>
-            <div ><i v-for="element in getStelline()" :key="element.id" class="fas fa-star"></i> </div>
-        </ul>
-
+    <div class="ms_contenitore col-3">
+        <div class="ms_poster">
+            <div @mouseover="visibilità = true" @mouseout="visibilità = false">
+                <img v-if="!visibilità" class="ms_cover" :src="getImg()" alt="">
+                <ul class="ms_ul" v-if="visibilità">
+                    <div>Titolo originale:{{info.original_title}}</div>
+                    <div>Titolo:{{info.title}}</div>
+                    <div>Lingua:  <img class="ms_bandiera" :src="cambioBandiera()" alt=""> </div>
+                    <div>
+                    <i v-for="element in getStelline2(voto)" :key="element.id" class="fas fa-star"></i>
+                    <i v-for="element in (5-getStelline2(voto))" :key="element.id" class="far fa-star"></i>
+                    </div>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,7 +25,8 @@ export default {
     },
     data() {
         return{
-            
+            voto:"",
+            visibilità:false
         }
     },
     methods:{
@@ -35,9 +41,9 @@ export default {
             }
         },
         getImg(){
-            return "https://image.tmdb.org/t/p/w342" + this.info.poster_path
+            return "https://image.tmdb.org/t/p/original" + this.info.poster_path
         },
-        getStelline(){
+        /* getStelline(){
             const arrayStelline = [];
             const numeroStelline = ( this.info.vote_average / 2).toFixed(0);
             for( let cont = 0; cont <= numeroStelline; cont++ )
@@ -45,6 +51,10 @@ export default {
                 arrayStelline.push( 2 )
             }
             return arrayStelline
+        }, */
+        getStelline2(){
+            this.voto = Math.ceil( this.info.vote_average / 2)
+            return this.voto
         }
     }
 
@@ -59,5 +69,32 @@ export default {
         text-align: center;
     }
 
+    .ms_cover{
+        width: 100%
+    }
+
+    .ms_poster{
+        width: 70%;
+    }
+
+    .ms_contenitore{
+        margin: 10px 0px;
+    }
+    
+
+    .ms_ul{
+        padding:0;
+        color: white;
+        height: 300px;
+
+        .fa-star{
+                color: yellow;
+            }
+        li{
+            list-style-type: none;
+
+            
+        }
+    }
 
 </style>
