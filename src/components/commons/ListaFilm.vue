@@ -7,6 +7,7 @@
                     <div>Titolo originale:{{info.original_title}}</div>
                     <div>Titolo:{{info.title}}</div>
                     <div>Lingua:  <img class="ms_bandiera" :src="cambioBandiera()" alt=""> </div>
+                    <li class="ms_overview">Overview:{{info.overview}}</li>
                     <div>
                     <i v-for="element in getStelline2(voto)" :key="element.id" class="fas fa-star"></i>
                     <i v-for="element in (5-getStelline2(voto))" :key="element.id" class="far fa-star"></i>
@@ -90,7 +91,12 @@ export default {
         background-color: black;
         border: 1px solid white;
         border-radius: 10px;
+        overflow-y: scroll;
     }
+
+    .ms_poster::-webkit-scrollbar {
+    display: none;
+}
 
     .ms_contenitore{
         margin: 10px 0px;
@@ -100,8 +106,11 @@ export default {
     .ms_ul{
         padding:5px 5px;
         color: white;
-        height: 300px;
+        height: 100%;
 
+        .ms_overview{
+            font-size: 12px;
+        }
         .fa-star{
                 color: yellow;
             }

@@ -3,10 +3,10 @@
         <div class="ms_poster" @mouseover="visibilità = true" @mouseout="visibilità = false">
                 <img class="ms_cover" v-if="!visibilità" :src="getImg()" alt="">
                 <ul class="ms_ul" v-if="visibilità">
-                    <!-- <li><img :src="cambioBandiera()" alt=""></li> -->
                     <li>Titolo originale:{{info2.original_name}}</li>
                     <li>Titolo:{{info2.name}}</li>
                     <li>Lingua:  <img :src="cambioBandiera()" alt=""> </li>
+                    <li class="ms_overview">Overview:{{info2.overview}}</li>
                     <li >
                         <i v-for="element in getStelline2(voto)" :key="element.id" class="fas fa-star"></i>
                         <i v-for="element in (5-getStelline2(voto))" :key="element.id" class="far fa-star"></i>
@@ -92,7 +92,12 @@ export default {
         background-color: black;
         border: 1px solid white;
         border-radius: 10px;
+        overflow-y: scroll;
     }
+
+    .ms_poster::-webkit-scrollbar {
+    display: none;
+}
 
     .ms_contenitore{
         margin: 10px 0px;
@@ -102,6 +107,10 @@ export default {
         padding:5px 5px;
         color: white;
         height: 300px;
+
+        .ms_overview{
+            font-size: 12px;
+        }
         .fa-star{
                 color: yellow;
             }
