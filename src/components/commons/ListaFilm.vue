@@ -1,8 +1,9 @@
 <template>
-    <div class="ms_contenitore col">
-        <div class="ms_poster" @mouseover="visibilità = true" @mouseout="visibilità = false">
+
+    <div class="ms_contenitore col-3">
+        <div class="ms_poster" @click="visibilità = !visibilità">
             
-                <img v-if="!visibilità" class="ms_cover" :src="getImg()" alt="">
+                <img class="ms_cover" v-if="!visibilità"  :src="getImg()" alt="">
                 <ul class="ms_ul" v-if="visibilità">
                     <div>Titolo originale:{{info.original_title}}</div>
                     <div>Titolo:{{info.title}}</div>
@@ -15,7 +16,10 @@
                 </ul>
             
         </div>
+        
     </div>
+
+    
 </template>
 
 <script>
@@ -49,15 +53,7 @@ export default {
                 return require("../../assets/img/No_Image_Cover.jpg")
             }
         },
-        /* getStelline(){
-            const arrayStelline = [];
-            const numeroStelline = ( this.info.vote_average / 2).toFixed(0);
-            for( let cont = 0; cont <= numeroStelline; cont++ )
-            {
-                arrayStelline.push( 2 )
-            }
-            return arrayStelline
-        }, */
+        
         getStelline2(){
             this.voto = Math.ceil( this.info.vote_average / 2)
             return this.voto
@@ -78,19 +74,16 @@ export default {
     .ms_cover{
         height: 100%;
         width: 100%;
-        border-radius:10px;
+        
         img{
             width: 100%;
-            
         }
     }
 
     .ms_poster{
-        width: 200px;
-        height: 300px;
+        width: 500px;
+        height: 700px;
         background-color: black;
-        border: 1px solid white;
-        border-radius: 10px;
         overflow-y: scroll;
     }
 
@@ -99,7 +92,9 @@ export default {
 }
 
     .ms_contenitore{
-        margin: 10px 0px;
+        display: inline-block;
+        float: none;
+        margin: 10px 15px;
     }
     
 

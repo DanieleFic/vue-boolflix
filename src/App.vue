@@ -24,6 +24,10 @@ export default {
       inputCercaAncora:""
     }
   },
+  created: function(){
+        this.FilmIniziali()
+        
+    },
   methods: {
       getFilm(){
         /* console.log("arrivato in main", this.inputCercaAncora) */
@@ -61,9 +65,17 @@ export default {
           console.log("prova");
         })
         },
+        //funzione che ti fa uscire i film alla creazione della pagina
+        FilmIniziali: function(){
+          this.inputCercaAncora = "The"
+          this.getFilm()
+          console.log("ciao")
+          
+        },
       /* passaFiltroApp(inputFiltro){
           this.$emit("filtraAncora", inputFiltro)
       }, */
+      //dati che ci arrivano tramite emit dall Header
       aggiornaDataAPI(inputFiltro){
         this.inputCercaAncora = inputFiltro;
         this.getFilm()
@@ -77,5 +89,5 @@ export default {
 
 <style lang="scss">
   @import "./assets/style/globals.scss";
-
+  
 </style>

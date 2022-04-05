@@ -1,6 +1,6 @@
 <template>
-    <div  class="ms_contenitore col">
-        <div class="ms_poster" @mouseover="visibilità = true" @mouseout="visibilità = false">
+    <div  class="ms_contenitore col-3">
+        <div class="ms_poster" @click="visibilità = !visibilità" >
                 <img class="ms_cover" v-if="!visibilità" :src="getImg()" alt="">
                 <ul class="ms_ul" v-if="visibilità">
                     <li>Titolo originale:{{info2.original_name}}</li>
@@ -80,18 +80,16 @@ export default {
     .ms_cover{
         height: 100%;
         width: 100%;
-        border-radius:10px;
+        
         img{
             width: 100%
         }
     }
 
     .ms_poster{
-        width: 200px;
-        height: 300px;
+        width: 500px;
+        height: 700px;
         background-color: black;
-        border: 1px solid white;
-        border-radius: 10px;
         overflow-y: scroll;
     }
 
@@ -100,7 +98,9 @@ export default {
 }
 
     .ms_contenitore{
-        margin: 10px 0px;
+        display: inline-block;
+        float: none;
+        margin: 10px 15px;
     }
 
     .ms_ul{
